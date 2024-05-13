@@ -1,0 +1,83 @@
+/*********************** GENERIC STYLE **************************/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #222;
+    color: white;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+
+button {
+    padding: 0.5rem;
+}
+
+
+/************************ CAROUSEL STYLE *************************/
+.slide {
+    /* display: none; */
+    position: relative;
+}
+
+/* .active {
+    display: block;
+} */
+
+.slide>img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    display: block;
+}
+
+.slide>.caption {
+    position: absolute;
+    bottom: 0px;
+    padding: 1rem;
+    width: 100%;
+}
+
+.slide>.caption>h2 {
+    font-size: 4rem;
+}
+
+.slide>.caption>p {
+    font-size: 1.5rem;
+}
+
+#buttonContainer {
+    position: absolute;
+    top: 0px;
+    padding: 1rem;
+    width: 100%;
+    z-index: 999;
+}
+
+#thumbnailsContainer {
+    display: flex;
+    overflow-x: auto;
+}
+
+#thumbnailsContainer>img {
+    height: 20vh;
+    width: 25%;
+    object-fit: cover;
+    display: block;
+    flex-shrink: 0;
+    opacity: 0.35;
+}
+
+#thumbnailsContainer>img:hover {
+    opacity: 0.65;
+}
+
+#thumbnailsContainer>img.active {
+    opacity: 1;
+}
