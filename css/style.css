@@ -22,13 +22,13 @@ button {
 
 /************************ CAROUSEL STYLE *************************/
 .slide {
-    /* display: none; */
+    display: none;
     position: relative;
 }
 
-/* .active {
+.active {
     display: block;
-} */
+}
 
 .slide>img {
     width: 100%;

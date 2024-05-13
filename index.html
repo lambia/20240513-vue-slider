@@ -12,18 +12,22 @@
 <body>
 
     <div id="app">
-        <h1 v-if="vueIsAwesome">Vue è fantastico!</h1>
-        <h1 v-else>Vue è orribile!</h1>
 
-        <button @click="changeVueAwesomeness">Attualmente: {{ vueIsAwesome }}</button>
-
-        <ul>
-            <li v-for="nome, i in names">{{ i }} si chiama {{ nome }}</li>
-        </ul>
-
-        <div class="slide">
-            <img @click="cambiaPercorso" :src="percorsoImg" alt="">
+        <div id="buttonContainer">
+            <button @click="back()">Indietro</button>
+            <button @click="next()">Avanti</button>
+            <br><input type="number" v-model="activeImage">
         </div>
+
+        <div v-for="image, i in images" class="slide" :class="checkImageVisibility(i)">
+            <img :src="image" alt="">
+        </div>
+
+        <div id="thumbnailsContainer">
+            <img v-for="thumbnail, i in images" :class="checkImageVisibility(i)" :src="thumbnail">
+        </div>
+
+
     </div>
 
     <script src="./js/main.js"></script>

@@ -1,42 +1,41 @@
-console.log("Caricamento file JS iniziato");
-
 const { createApp } = Vue
 
 createApp({
 
     data() {
         return {
-            percorsoImg: "./img/1.jpeg",
-            names: [
-                'Michele',
-                'Fabio',
-                'Roberto'
+            images: [
+                "./img/1.jpeg",
+                "./img/2.webp",
+                "./img/3.jpeg",
+                "./img/4.jpg",
+                "./img/5.jpg",
+                "./img/6.jpg",
             ],
-            vueIsAwesome: false
+            activeImage: 0
         }
     },
     methods: {
-        changeVueAwesomeness() {
-            // if (this.vueIsAwesome == false) {
-            //     this.vueIsAwesome = true;
-            // } else {
-            //     this.vueIsAwesome = false;
-            // }
-            this.vueIsAwesome = !this.vueIsAwesome;
+        checkImageVisibility(indice) {
+            return (indice == this.activeImage) ? 'active' : '';
         },
-        cambiaPercorso() {
-            if (this.percorsoImg == "./img/1.jpeg") {
-                this.percorsoImg = "./img/2.webp";
-            } else {
-                this.percorsoImg = "./img/1.jpeg"
-            }
+        // checkImageVisibility(indice) {
+        //     if (indice == 0) {
+        //         return "active";
+        //     } else {
+        //         return "";
+        //     }
+        // }
+        next() {
+            this.activeImage++;
         },
+        back() {
+            this.activeImage--;
+        }
     },
     mounted() {
-        console.log("Applicazione Vue montata correttamente");
-        console.log("Nomi: ", this.names);
-        // this.title = "Applicazione caricata";
-        // this.cambiaTitolo();
+        // this.activeImage = 3;
+        console.log("Slide iniziale: ", this.activeImage);
     }
 
 }).mount('#app')
