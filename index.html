@@ -24,7 +24,8 @@
         </div>
 
         <div id="thumbnailsContainer">
-            <img v-for="thumbnail, i in images" :class="checkImageVisibility(i)" :src="thumbnail">
+            <img v-for="thumbnail, i in images" :class="checkImageVisibility(i)" :src="thumbnail"
+                @click="mostraSlide(i)">
         </div>
 
 

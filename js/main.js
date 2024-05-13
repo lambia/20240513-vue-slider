@@ -12,7 +12,8 @@ createApp({
                 "./img/5.jpg",
                 "./img/6.jpg",
             ],
-            activeImage: 0
+            activeImage: 0,
+            timer: null
         }
     },
     methods: {
@@ -31,11 +32,18 @@ createApp({
         },
         back() {
             this.activeImage--;
+        },
+        mostraSlide(indice) {
+            this.activeImage = indice;
         }
     },
     mounted() {
         // this.activeImage = 3;
         console.log("Slide iniziale: ", this.activeImage);
+
+        this.timer = setInterval(function () {
+            console.log("passato un secondo");
+        }, 1000);
     }
 
 }).mount('#app')
