@@ -14,11 +14,14 @@
     <div id="app">
 
         <div id="buttonContainer">
-            <button @click="back()">Indietro</button>
-            <button @click="next()">Avanti</button>
+            <button @click="backButton()">Indietro</button>
+            <button @click="nextButton()">Avanti</button>
+            <button @click="startAutoplay()">PLAY</button>
+            <button @click="stopAutoplay()">STOP</button>
         </div>
 
-        <div v-for="image, i in images" class="slide" :class="checkImageVisibility(i)">
+        <div v-for="image, i in images" class="slide" :class="checkImageVisibility(i)" @mouseenter="stopAutoplay"
+            @mouseleave="startAutoplay">
             <img :src="image" alt="">
         </div>
 

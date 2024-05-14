@@ -27,23 +27,68 @@ createApp({
         //         return "";
         //     }
         // }
-        next() {
-            this.activeImage++;
+        nextButton() {
+            this.stopAutoplay();
+            this.next();
+            this.startAutoplay();
         },
-        back() {
-            this.activeImage--;
+        backButton() {
+            this.stopAutoplay();
+            this.back();
+            this.startAutoplay();
         },
         mostraSlide(indice) {
+            this.stopAutoplay();
             this.activeImage = indice;
+            this.startAutoplay();
+        },
+        next() {
+            let ultimaSlide = this.images.length - 1;
+
+            if (this.activeImage < ultimaSlide) {
+                this.activeImage++;
+            } else {
+                this.activeImage = 0;
+            }
+        },
+        back() {
+            //versione con operatore ternario
+            this.activeImage = (this.activeImage == 0) ? (this.images.length - 1) : (this.activeImage - 1);
+        },
+        stopAutoplay() {
+            console.log("Stoppo l'autoplay");
+            if (this.timer) {
+                clearInterval(this.timer);
+                this.timer = null;
+            }
+        },
+        startAutoplay() {
+            console.log("Avvio l'autoplay");
+            if (!this.timer) {
+
+                this.timer = setInterval(this.next, 1000);
+
+                // Con funzione classica this vale oggetto Window. Creiamo una variabile che faccia riferimento a this.
+                // Lo scope si propaga dall'alto verso il basso quindi vediamo la variabile anche nella funzione
+                // let self = this;
+                // this.timer = setInterval(function () {
+                //     self.next();
+                // }, 1000);
+
+                // Con arrow function il this non cambia rispetto allo scope genitore (viene ereditato)
+                // this.timer = setInterval(() => {
+                //     this.next();
+                // }, 1000);
+
+
+            }
         }
     },
     mounted() {
         // this.activeImage = 3;
         console.log("Slide iniziale: ", this.activeImage);
 
-        this.timer = setInterval(function () {
-            console.log("passato un secondo");
-        }, 1000);
+        this.startAutoplay();
     }
 
 }).mount('#app')
