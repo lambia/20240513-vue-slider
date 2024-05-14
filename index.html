@@ -16,7 +16,6 @@
         <div id="buttonContainer">
             <button @click="back()">Indietro</button>
             <button @click="next()">Avanti</button>
-            <br><input type="number" v-model="activeImage">
         </div>
 
         <div v-for="image, i in images" class="slide" :class="checkImageVisibility(i)">
@@ -24,7 +23,7 @@
         </div>
 
         <div id="thumbnailsContainer">
-            <img v-for="thumbnail, i in images" :class="checkImageVisibility(i)" :src="thumbnail"
+            <img v-for="thumbnail, i in images" :class="{ active: (i==activeImage) }" :src="thumbnail"
                 @click="mostraSlide(i)">
         </div>
 
